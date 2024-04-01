@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 
 export default class Nav extends Component {
     componentDidMount() {
- 
     const t1 = gsap.timeline({ default: { ease: "power4.out", duration: 0.7 } });
     t1.from("#Matrix path, #Master path", {
         xPercent: -20,
@@ -36,10 +35,6 @@ export default class Nav extends Component {
     }
 }
     render() {
-        const t1 = gsap.timeline({ default: { ease: "power4.out", duration: 0.7 } });
-    t1.from("#Vector", {
-        yPercent: -300,
-    });
     return (
       <div>
           <nav class="nav">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+console.log(Component);
 export default class List extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ export default class List extends Component {
     this.setState({ disc: e.target.value });
   };
 
-  addlist = () => {
+  addTask = () => {
     if (this.state.inputval === '' || this.state.disc === '') return;
     else {
       let newli = [...this.state.listoftodo];
@@ -44,17 +44,15 @@ export default class List extends Component {
          <div className='TODOin'>
         <input
           type="text"
-          value={this.state.inputval}
           onChange={this.savetext}
           placeholder="Title"
         />
         <input
           type="text"
-          value={this.state.disc}
           onChange={this.savedisc}
           placeholder="Description"
         />
-        <button onClick={this.addlist}>Add Task</button>
+        <button onClick={this.addTask}>Add Task</button>
         </div>
         <h1>your todo list:</h1>
         <ul>
