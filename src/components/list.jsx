@@ -20,6 +20,7 @@ export default class List extends Component {
   addTask = () => {
     if (this.state.inputval === '' || this.state.disc === '') return;
     else {
+      document.querySelectorAll('.input').forEach((item) => (item.value='') );
       let newli = [...this.state.listoftodo];
       console.log(newli)
       newli.push({ title: this.state.inputval, description: this.state.disc });
@@ -42,12 +43,12 @@ export default class List extends Component {
     return (
       <div className='TODO'>
          <div className='TODOin'>
-        <input
+        <input className='input'
           type="text"
           onChange={this.savetext}
           placeholder="Title"
         />
-        <input
+        <input className='input'
           type="text"
           onChange={this.savedisc}
           placeholder="Description"
