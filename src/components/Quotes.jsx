@@ -24,9 +24,11 @@ export default function Quotes() {
     }
 
     return (
-        <div>
+        <div style={{
+            display:'flex', flexDirection:"column", alignItems:"center"
+        }}>
             Quotes
-            <div className='container'>
+            <div className='container' >
                 { quotes.map(quote => (
                     <div key={quote._id}>
                     <h2 >{quote.content && quote.content}</h2>
