@@ -33,27 +33,23 @@ export default function Demo() {
         seterr(null)
         setchoisUsers([]);
     }
-    /**
-     * The handleSubmit function filters a list of users based on a search term and updates the state
-     * with the filtered results or an error message if no matches are found.
-     * @returns The `handleSubmit` function is returning either an empty array `[]` if the `inputval` is
-     * empty, or it is setting the `choisUsers` state to the filtered items based on the search term. If
-     * no items are found in the filter, it sets the `err` state to "not found". Finally, it sets the
-     * `FilteredUsers` state to an empty array.
-     */
+ 
+/**
+ * The handleSubmit function takes a search term, filters a list of users based on their first name
+ * matching the search term, and updates state accordingly.
+ */
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (inputval == '') { return setFilteredUsers([]) }
         const searchTerm = inputval.toLowerCase();
-        const filteredItems = user.users.filter(user =>
-            user.firstName.toLowerCase().includes(searchTerm)
+        const filteredItems = user.users.find(user =>
+            user.firstName.toLowerCase() === searchTerm
         )
-        if (filteredItems.length === 0) {
+        if (!filteredItems) {
             seterr("not found")
         } else {
             setchoisUsers(filteredItems);
         }
-        setFilteredUsers([])
+        setFilteredUsers(null)
     }
     /**
      * The `handleclick` function finds a user by their ID and updates the state with the found user.
