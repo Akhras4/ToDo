@@ -40,7 +40,6 @@ export default function Demo() {
         setchoisUsers(filteredItems);
     }setFilteredUsers(null)
     };
-
     return (
         <div>
             <div>
