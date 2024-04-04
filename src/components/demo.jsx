@@ -52,7 +52,7 @@ export default function Demo() {
                     <button type='submit'>Search</button>
                 </form>
                 <ul>
-                {inputval &&filteredUsers.map(user => <li key={user.id}>{user.firstName}</li>)}
+                {inputval &&filteredUsers&&filteredUsers.map(user => <li key={user.id}>{user.firstName}</li>)}
                 </ul>
                 {userchois && userchois.map(user => <div key={user.id}>
                 <h1>firstName:{user.firstName}</h1>
