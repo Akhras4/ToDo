@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { gsap } from 'gsap';
+import Demo from './demo';
 
 export default class Nav extends Component {
     componentDidMount() {
@@ -69,6 +70,7 @@ export default class Nav extends Component {
     </svg>
 </div>
 <div class="RightSideContiner">
+    <Demo />
     <div>
     <svg width="113" height="33" viewBox="0 0 113 33" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="Frame 1" clip-path="url(#clip0_1_2)">
