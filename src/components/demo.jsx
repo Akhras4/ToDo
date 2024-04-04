@@ -15,6 +15,7 @@ export default function Demo() {
             .catch(err => seterr('Something went wrong, please try again'));
     }, []);
     const handelinput=(e)=>{
+        setFilteredUsers([])
         const searchTerm = e.target.value.toLowerCase();
         setinputval(searchTerm)
         console.log(user); 
@@ -24,7 +25,7 @@ export default function Demo() {
         setFilteredUsers(filteredItemshint);
         seterr(null)
         setchoisUsers(null);
-    }
+ }
     const handleSubmit = (e) => {
         e.preventDefault()
         if(inputval==''){return setFilteredUsers(null)} 
@@ -51,7 +52,7 @@ export default function Demo() {
                     <button type='submit'>Search</button>
                 </form>
                 <ul>
-                    {filteredUsers && filteredUsers.map(user => <li key={user.id}>{user.firstName}</li>)}
+                {inputval &&filteredUsers.map(user => <li key={user.id}>{user.firstName}</li>)}
                 </ul>
                 {userchois && userchois.map(user => <div key={user.id}>
                 <h1>firstName:{user.firstName}</h1>
