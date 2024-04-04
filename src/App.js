@@ -11,7 +11,6 @@ function App() {
       <Nav />
       <List />
       <Quotes />
-      <Demo />
     </div>
   );
 }
