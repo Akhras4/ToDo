@@ -6,16 +6,15 @@ export default function Demo() {
     const [user, setUser] = useState([]);
     const [err, seterr] = useState('');
     const [filteredUsers, setFilteredUsers] = useState([]);
-    const [userchois,setchoisUsers]  =useState([])
+    const [userchois,setchoisUsers]  =useState()
     useEffect(() => {
         axios.get('https://dummyjson.com/users')
             .then(result => {
-                setUser(result.data);
+                setUser(result.data); 
             })
             .catch(err => seterr('Something went wrong, please try again'));
     }, []);
     const handelinput=(e)=>{
-        setFilteredUsers([])
         const searchTerm = e.target.value.toLowerCase();
         setinputval(searchTerm)
         console.log(user); 
@@ -24,11 +23,11 @@ export default function Demo() {
         )
         setFilteredUsers(filteredItemshint);
         seterr(null)
-        setchoisUsers(null);
+        setchoisUsers([]);
  }
     const handleSubmit = (e) => {
         e.preventDefault()
-        if(inputval==''){return setFilteredUsers(null)} 
+        if(inputval==''){return setFilteredUsers([])} 
         const searchTerm = inputval.toLowerCase(); 
         const filteredItems =  user.users.filter(user =>
             user.firstName.toLowerCase().includes(searchTerm)
@@ -37,8 +36,17 @@ export default function Demo() {
             seterr("not found")
         }else{
         setchoisUsers(filteredItems);
-    }setFilteredUsers(null)
-    };
+    }
+    setFilteredUsers([])
+    }
+    const handleclick = (userId) => {
+        const finduser = user.users.find(user => user.id === userId);
+        if (finduser) {
+            setchoisUsers([finduser]);
+            setFilteredUsers([])
+        }
+    }
+    
     return (
         <div>
             <div>
@@ -52,14 +60,14 @@ export default function Demo() {
                     <button type='submit'>Search</button>
                 </form>
                 <ul>
-                {inputval &&filteredUsers&&filteredUsers.map(user => <li key={user.id}>{user.firstName}</li>)}
+                {inputval &&filteredUsers&&filteredUsers.map(user => <li key={user.id} onClick={() => handleclick(user.id)}>{user.firstName}</li>)}
                 </ul>
                 {userchois && userchois.map(user => <div key={user.id}>
                 <h1>firstName:{user.firstName}</h1>
                 <p>lastName:{user.lastName}</p>
                 <p>email:{user.email}</p>
                 <p>phone:{user.phone}</p>
-                <p>hair:{user.hair.type}</p>
+                <p>hair:{user?.hair?.type}</p>
                 </div>)}
                 {err && <p>{err}</p>}
             </div>
