@@ -7,7 +7,6 @@ export default function Demo() {
     const [err, seterr] = useState('');
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [userchois,setchoisUsers]  =useState([])
-
     useEffect(() => {
         axios.get('https://dummyjson.com/users')
             .then(result => {
@@ -16,17 +15,16 @@ export default function Demo() {
             .catch(err => seterr('Something went wrong, please try again'));
     }, []);
     const handelinput=(e)=>{
-        setinputval(e.target.value)
-        const searchTerm = inputval.toLowerCase();
+        const searchTerm = e.target.value.toLowerCase();
+        setinputval(searchTerm)
         console.log(user); 
         const filteredItemshint =  user.users.filter(user =>
-            user.firstName.toLowerCase().includes(searchTerm)
+            user.firstName.toLowerCase().startsWith(searchTerm)
         )
         setFilteredUsers(filteredItemshint);
         seterr(null)
         setchoisUsers(null);
     }
-
     const handleSubmit = (e) => {
         e.preventDefault()
         if(inputval==''){return setFilteredUsers(null)} 
