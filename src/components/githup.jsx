@@ -9,7 +9,7 @@ const [errgit,seterrgit]=useState(null)
 const [errinfo,seterrinfo]=useState(null)
 const [errrepo,seterrrepo]=useState(null)
 const clientId = "be2766792dd89cb0c93b";
-const clientSecret ="c63166b1eb64bdd81f3dfe45c94c61e6e66e6e1c"
+const clientSecret ="c63166b1eb64bdd81f3dfe45c94c61e6e66e6e1c";
 
 useEffect(()=>{
     fetchdata()
@@ -21,7 +21,7 @@ axios.get(`https://api.github.com/users/${username}?client_id=${clientId}&client
 .catch(error => {seterrgit('user not found');})
 axios.get(`https://api.github.com/users/${username}/repos`)
 .then(repo => {if(!repo.data){seterrrepo('user dont have any repo yet') ;return}setuserrepo(repo.data);})
-.catch(error => {seterrgit('someting wrong pleace try ');})
+.catch(error => { seterrgit('someting wrong pleace try '); })
 ;}
 
 const handleSubmit=(e)=>{
