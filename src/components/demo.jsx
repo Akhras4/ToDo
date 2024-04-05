@@ -41,13 +41,14 @@ export default function Demo() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const searchTerm = inputval.toLowerCase();
-        const filteredItems = user.users.find(user =>
+        const filteredItems = user.users.filter(user =>
             user.firstName.toLowerCase() === searchTerm
         )
-        if (!filteredItems) {
+        if (filteredItems.length === 0) {
             seterr("not found")
         } else {
             setchoisUsers(filteredItems);
+            console.log("test="+filteredItems);
         }
         setFilteredUsers([])
     }
