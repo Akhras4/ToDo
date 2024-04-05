@@ -3,7 +3,7 @@ import './App.css';
 import Nav from'./components/nav';
 import List from './components/list';
 import Quotes from './components/Quotes';
-import Demo from './components/demo';
+import Githup from './components/githup';
 import './App.css';
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Nav />
       <List />
       <Quotes />
+      <Githup />
     </div>
   );
 }

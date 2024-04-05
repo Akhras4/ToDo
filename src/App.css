@@ -2,7 +2,7 @@ body{
   background-color: white; 
   height: 100vh;
   font-family: "Poppins";
-  overflow: hidden;
+  overflow:scroll;
   
 }
 nav{
@@ -64,7 +64,7 @@ svg {
 
 .search-container {
   position: relative;
-  width: 200px; /* Adjust as needed */
+  width: 250px; /* Adjust as needed */
   margin-right: 20px;
 }
 
