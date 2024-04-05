@@ -17,11 +17,11 @@ useEffect(()=>{
 const fetchdata=()=>{
     if(!username){return} 
 axios.get(`https://api.github.com/users/${username}?client_id=${clientId}&client_secret=${clientSecret}&sort=created`)
-.then(info => {if(!info){seterrinfo('user not found') ;return}setuserinf(info.data);})
+.then(info => {if(!info.data){seterrinfo('user not found') ;return}setuserinf(info.data);})
 .catch(error => {seterrgit('user not found');})
 axios.get(`https://api.github.com/users/${username}/repos`)
-.then(repo => {if(!repo){seterrrepo('user user dont have any repo yet') ;return}setuserrepo(repo.data);})
-.catch(error => {seterrgit('someting wrong pleace try again to show user repo');})
+.then(repo => {if(!repo.data){seterrrepo('user dont have any repo yet') ;return}setuserrepo(repo.data);})
+.catch(error => {seterrgit('someting wrong pleace try ');})
 ;}
 
 const handleSubmit=(e)=>{
@@ -54,12 +54,12 @@ const handleSubmit=(e)=>{
         {errinfo && <p>{errinfo}</p>}
         { userinfo &&  (
         <div >
-           <img src={userinfo.avatar_url} style={{borderradius:'50px' }} />
+           <img src={userinfo.avatar_url} style={{borderRadius: '250px'  }} />
           <ul>
           { userinfo.name && <li>Fullname: { userinfo.name}</li>}
           { userinfo.login && <li>Username: { userinfo.login}</li>}
           { userinfo.location && <li>Location: { userinfo.location}</li>}
-          { userinfo.email && <li>Email Address: { userinfo.email}</li>}
+          { userinfo.email && <li> Email Address: { userinfo.email}</li>}
         </ul>
       </div>
         )}
