@@ -41,7 +41,7 @@ svg {
   align-items: center;
   flex-direction: column;
   padding: 0px 10px;
-  margin-top: 300px;
+  margin-top: 200px;
   border-radius: 10px;
   background-image: radial-gradient(circle at top left, #ffd2c6 , #ffaa96);
   color:#3b6e6a ;
@@ -50,6 +50,13 @@ svg {
 .TODOin{
   display: flex;
   flex-direction: column;
+  gap:10px;
+  width:30%;
+  margin-top:10px
+}
+.TODOin > input{
+  height:40px;
+  font-family:"Arial", sans
 }
 
 
