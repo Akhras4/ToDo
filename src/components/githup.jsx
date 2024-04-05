@@ -17,10 +17,10 @@ useEffect(()=>{
 const fetchdata=()=>{
     if(!username){return} 
 axios.get(`https://api.github.com/users/${username}?client_id=${clientId}&client_secret=${clientSecret}&sort=created`)
-.then(info => {if(!info.data){seterrinfo('user not found') ;return}setuserinf(info.data);})
+.then(info => {if(!info.data){seterrinfo('user not found') }setuserinf(info.data);})
 .catch(error => {seterrgit('user not found');})
 axios.get(`https://api.github.com/users/${username}/repos`)
-.then(repo => {if(!repo.data){seterrrepo('user dont have any repo yet') ;return}setuserrepo(repo.data);})
+.then(repo => {if(!repo.data || repo.data.length === 0){seterrrepo('user dont have any repo yet') }setuserrepo(repo.data); console.log(repo.data);})
 .catch(error => { seterrgit('someting wrong pleace try '); })
 ;}
 
