@@ -49,7 +49,7 @@ export default function Demo() {
         } else {
             setchoisUsers(filteredItems);
         }
-        setFilteredUsers(null)
+        setFilteredUsers([])
     }
     /**
      * The `handleclick` function finds a user by their ID and updates the state with the found user.
@@ -63,19 +63,23 @@ export default function Demo() {
     }
     return (
         <div>
-            <div>
-                <form onSubmit={handleSubmit}>
+            <div class="search-container">
+                <form class="search-form"  onSubmit={handleSubmit}>
                     <input
+                     class="search-input"
+                       list="browsers"
                         type="text"
                         onChange={handelinput}
                         value={inputval}
                         placeholder='Username'
                     />
-                    <button type='submit'>Search</button>
-                </form>
-                <ul>
-                    {inputval && filteredUsers && filteredUsers.map(user => <li key={user.id} onClick={() => handleclick(user.id)}>{user.firstName}</li>)}
-                </ul>
+                     <button class="search-button" type='submit'>Search</button>
+                     </form>
+                    <ul className="search-results" id="searchResults">
+                    {inputval && filteredUsers && filteredUsers.map(user =><li key={user.id} onClick={() => handleclick(user.id)}>{user.firstName}</li>)}
+                     </ul>
+                     </div>
+
                 {userchois && userchois.map(user => <div key={user.id}>
                     <h1>firstName:{user.firstName}</h1>
                     <p>lastName:{user.lastName}</p>
@@ -84,7 +88,7 @@ export default function Demo() {
                     <p>hair:{user.hair.type}</p>
                 </div>)}
                 {err && <p>{err}</p>}
-            </div>
+          
         </div>
     );
 }
